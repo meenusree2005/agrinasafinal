@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel Template · Bootstrap</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+    <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <style>
+        /* Navbar background */
+        .navbar {
+            background-color: #2e8b57; /* Sea green */
+        }
+
+        /* Carousel background */
+        .carousel-inner {
+            height: 600px;
+            background-color: #98fb98; /* Pale green */
+        }
+
+        /* Carousel item styling */
+        .carousel-item {
+            height: 100%;
+            background-color: #66cdaa; /* Medium aquamarine */
+        }
+
+        /* Image styling for carousel */
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures images cover the entire area */
+        }
+
+        /* Placeholder styling */
+        .bd-placeholder-img {
+            padding: 20px;
+            background-color: #32cd32; /* Lime green */
+            color: #fff;
+        }
+
+        /* Button styling */
+        .btn-secondary {
+            background-color: #228b22; /* Forest green */
+            border-color: #006400; /* Dark green */
+        }
+
+        .btn-secondary:hover {
+            background-color: #6b8e23; /* Olive drab */
+            border-color: #556b2f; /* Dark olive green */
+        }
+
+        /* Section headings */
+        h2, .featurette-heading {
+            color: #006400; /* Dark green */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2e8b57; /* Sea green */
+            color: #fff;
+        }
+
+        /* Image styling for featurettes */
+        .featurette-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures images cover the entire area */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+            <a class="navbar-brand" href="#">Carousel</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container marketing">
+            <div class="row">
+                <div class="col-lg-4">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin slice" focusable="false" role="img" aria-label="Placeholder: 140x140" style="padding: 20px;">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" />
+                        <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+                    </svg>
+                    <h2>Actionable farming insights</h2>
+                    <p>Real-time data, past-data, predictive insights and actionable</p>
+                </div>
+                <div class="col-lg-4">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin slice" focusable="false" role="img" aria-label="Placeholder: 140x140" style="padding: 20px;">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" />
+                        <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+                    </svg>
+                    <h2>Predictive Insights:</h2>
+                    <p>AI-driven models forecast future conditions like rain,
+                        temperature changes, and drought risks, helping you plan ahead.</p>
+                </div>
+                <div class="col-lg-4">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin slice" focusable="false" role="img" aria-label="Placeholder: 140x140" style="padding: 20px;">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#777" />
+                        <text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+                    </svg>
+                    <h2>Interactive Geographical Mapping:</h2>
+                    <p>See your farm on a detailed map
+                        showing live data overlays like rainfall distribution and soil moisture.
+                        &quot;With GIS mapping technology, visualize your farm&#39;s current conditions and
+                        access vital information in real-time.&quot;.</p>
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">Real-Time Weather Data:. <span class="text-muted">It’ll blow your mind!.</span></h2>
+                    <p class="lead">Real-Time Weather Data: Monitor current weather, including rainfall, humidity, wind speed, and temperature for your exact location. "Stay ahead of unpredictable weather patterns with live updates from NASA satellites, ensuring you are always informed before taking action.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="https://theagrotechdaily.com/wp-content/uploads/2022/04/SustainableAgricultureTechnology-scaled-1.jpg" class="featurette-image img-fluid mx-auto" alt="Sustainable Agriculture Technology" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+            <hr class="featurette-divider">
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading">AI-Powered Farming Suggestions:. <span class="text-muted">See for yourself!.</span></h2>
+                    <p class="lead">Get crop-specific advice tailored to your farm’s conditions. Our intelligent algorithms analyze your locations data and suggest optimal farming actions, from irrigation to fertilization.;.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img src="https://ambiq.com/wp-content/uploads/2023/02/smart-farming-concept-1200x800-1.jpg" class="featurette-image img-fluid mx-auto" alt="Smart Farming Concept" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+            <hr class="featurette-divider">
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">Risk Notifications. <span class="text-muted">Checkmate!.</span></h2>
+                    <p class="lead">Receive alerts for potential risks like droughts, storms, or pests that could affect your crops. "Our AI predicts weather anomalies and crop disease risks, helping you minimize damage to your farm.".</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="https://1.bp.blogspot.com/-hvyPzjwTCeQ/WIpbBUuSiHI/AAAAAAAABxU/kpcQr19AWvQzTWb5YL_mhp8TE4qIKRoVACLcB/s1600/AGRIC%2BRISK.jpg" class="featurette-image img-fluid mx-auto" alt="Risk Notifications" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+            <hr class="featurette-divider">
+        </div>
+    </main>
+
+    <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2017-2024 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-JU5DeuUOPfiE96N85fO5JtZPEBzGxYbYoIhYfZywU2z7l2/g5HE6GshhlJ8V1HcM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgG5b5f5KlvC6xq05e/o2qv2s63jLZAfA9qfRrbPjZBdxTp2V7j" crossorigin="anonymous"></script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/67028a2937379df10df2ec50/1i9gund97';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+
+</html>
+
+

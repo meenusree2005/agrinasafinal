@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Temperature Alert</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Basic reset and global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #ffafbd, #ffc3a0); /* More vibrant gradient */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: hsl(0, 3%, 8%);
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Lighter background for better contrast */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(19, 19, 19, 0.2);
+            width: 90%;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .flex-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .flex-item {
+            flex: 1;
+            background-color: rgba(240, 240, 240, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 250px;
+        }
+        #temperatureChart {
+            max-width: 100%;
+            margin: 20px auto;
+        }
+        /* Button to simulate data fetch */
+        button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff6b6b; /* Vibrant button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #f5e05c; /* Light hover effect */
+        }
+        /* Responsive styling */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 15px;
+            }
+            .flex-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Live Temperature & Climate Alerts</h1>
+        <canvas id="temperatureChart" width="400" height="200"></canvas>
+        <div class="flex-content">
+            <div class="flex-item">
+                <h2>Temperature Monitoring</h2>
+                <p>Keep track of real-time temperature variations to predict the effects of climate change on crops.</p>
+            </div>
+            <div class="flex-item">
+                <h2>Climate Alerts</h2>
+                <p>Receive alerts when temperatures exceed critical thresholds, indicating potential risks.</p>
+            </div>
+            <div class="flex-item">
+                <h2>AI-Based Predictions</h2>
+                <p>Our system uses AI to predict future weather patterns based on real-time data.</p>
+            </div>
+        </div>
+        <script>
+            // Example temperature data for demonstration, you can fetch real data from an API
+            var temperatureData = {
+                labels: ['10:00', '12:00', '14:00', '16:00', '18:00'],
+                datasets: [{
+                    label: 'Temperature (°C)',
+                    data: [22, 24, 26, 25, 27],
+                    backgroundColor: 'rgba(255, 99, 132, 0.4)', // More vibrant fill color
+                    borderColor: 'rgba(255, 99, 132, 1)', // Vibrant border color
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(255, 99, 132, 1)' // Color of the points
+                }]
+            };
+            var ctx = document.getElementById('temperatureChart').getContext('2d');
+            var temperatureChart = new Chart(ctx, {
+                type: 'line',
+                data: temperatureData,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            // Logic for temperature alert
+            function checkTemperatureAlerts(temperature) {
+                if (temperature > 30) {
+                    alert("Temperature is too high! Potential climate change impact on crops.");
+                }
+            }
+            // Simulate live update with random data and check alerts
+            setInterval(function() {
+                var newTemperature = Math.floor(Math.random() * 35);
+                temperatureData.datasets[0].data.push(newTemperature);
+                temperatureData.labels.push(new Date().toLocaleTimeString());
+                temperatureChart.update();
+                checkTemperatureAlerts(newTemperature);
+            }, 5000); // Update every 5 seconds
+        </script>
+        <button onclick="alert('Fetching real-time data soon!')">Simulate Data Fetch</button>
+    </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Weather Forecast</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .weather-card {
+            background: #e9ecef;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agricultural Weather Forecast</h1>
+        <input type="text" id="location" class="input-field" placeholder="Enter Location" />
+        <button class="btn" onclick="getWeather()">Get Weather</button>
+        <div id="weatherData" class="weather-card" style="display:none;"></div>
+    </div>
+    <script>
+        function getWeather() {
+            const location = document.getElementById('location').value;
+            // Sample data for demonstration
+            const weatherData = {
+                location: location,
+                temperature: '28°C',
+                humidity: '60%',
+                rain: '10mm',
+                forecast: 'Sunny with a chance of rain'
+            };
+            // Displaying weather data
+            const weatherDiv = document.getElementById('weatherData');
+            weatherDiv.innerHTML = `
+                <h3>Weather Forecast for ${weatherData.location}</h3>
+                <p>Temperature: ${weatherData.temperature}</p>
+                <p>Humidity: ${weatherData.humidity}</p>
+                <p>Rain: ${weatherData.rain}</p>
+                <p>Forecast: ${weatherData.forecast}</p>
+            `;
+            weatherDiv.style.display = 'block';
+        }
+    </script>
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/67028a2937379df10df2ec50/1i9gund97';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+</html>

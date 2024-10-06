@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrant Crop Challenges Module</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Basic Module Styling */
+        body {
+            background-color: #e8f5e9;
+            font-family: Arial, sans-serif;
+        }
+
+        .module-title {
+            color: #2e7d32;
+            text-align: center;
+            font-size: 2.5em;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .challenge-card {
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            color: #110000;
+            margin: 15px;
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid #ddd;
+            /* Added border for better definition */
+            position: relative;
+            /* Added for positioning the overlay */
+            overflow: hidden;
+            /* Added to ensure overlay doesn't spill */
+        }
+
+        .challenge-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Individual Card Backgrounds */
+        .pest-infestation {
+            background-color: #ff5722;
+            background-image: url('https://example.com/pest-bg.jpg');
+        }
+
+        .drought {
+            background-color: #fbc02d;
+            background-image: url('https://example.com/drought-bg.jpg');
+        }
+
+        .nutrient-deficiency {
+            background-color: #1976d2;
+            background-image: url('https://example.com/nutrient-bg.jpg');
+        }
+
+        .more-btn {
+            background-color: #ffffff;
+            color: inherit;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            transition: background-color 0.2s, transform 0.2s;
+            /* Added transform transition */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .more-btn:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            transform: translateY(-2px);
+            /* Button hover effect */
+        }
+
+        .form-container {
+            width: 80%;
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        form {
+            margin: 30px auto;
+            /* More spacing around the form */
+            padding: 20px;
+            /* Padding for form */
+            background-color: #fff;
+            /* White background for contrast */
+            border-radius: 10px;
+            /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* Shadow for depth */
+        }
+
+        /* Additional styles for form inputs */
+        .form-control {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #2e7d32;
+            /* Green border on focus */
+            box-shadow: 0 0 5px rgba(46, 125, 50, 0.5);
+            /* Glow effect */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .module-title {
+                font-size: 2em;
+                /* Smaller title on mobile */
+            }
+
+            .challenge-card {
+                margin: 10px 0;
+                /* Reduced margins on mobile */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="module-title">Crop Challenges</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="challenge-card pest-infestation">
+                    <h2>Pest Infestation</h2>
+                    <p>Pests affecting crops lead to reduced yield and damaged plants.</p>
+                    <button class="more-btn" onclick="showDetails('Pest Infestation')"
+                        aria-label="Learn more about Pest Infestation">Learn More</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="challenge-card drought">
+                    <h2>Drought</h2>
+                    <p>Insufficient water supply causes plants to wilt and reduces crop health.</p>
+                    <button class="more-btn" onclick="showDetails('Drought')"
+                        aria-label="Learn more about Drought">Learn More</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="challenge-card nutrient-deficiency">
+                    <h2>Nutrient Deficiency</h2>
+                    <p>Lack of essential nutrients in soil affects crop growth and quality.</p>
+                    <button class="more-btn" onclick="showDetails('Nutrient Deficiency')"
+                        aria-label="Learn more about Nutrient Deficiency">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailsModalLabel">Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <!-- Detailed information will be inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // JavaScript for Details Popup
+        function showDetails(challenge) {
+            let details = '';
+            switch (challenge) {
+                case 'Pest Infestation':
+                    details = '<p>Pest infestations can significantly damage crops, leading to a decline in yield and quality. Common pests include aphids, beetles, and caterpillars. Farmers can use integrated pest management strategies to control infestations, such as introducing beneficial insects, applying insecticidal soaps, or using neem oil.</p>';
+                    break;
+                case 'Drought':
+                    details = '<p>Drought conditions can severely impact crop health, leading to stunted growth and reduced harvests. Effective water management practices, such as drip irrigation and rainwater harvesting, can help mitigate the effects of drought. Additionally, selecting drought-resistant crop varieties can improve resilience.</p>';
+                    break;
+                case 'Nutrient Deficiency':
+                    details = '<p>Nutrient deficiencies occur when crops do not receive essential nutrients from the soil, leading to poor growth and low yields. Key nutrients include nitrogen, phosphorus, and potassium. Soil testing and appropriate fertilization strategies can help ensure crops receive the nutrients they need for optimal growth.</p>';
+                    break;
+                default:
+                    details = '<p>More information will be available soon.</p>';
+            }
+            document.getElementById('modalBody').innerHTML = details;
+            $('#detailsModal').modal('show');
+        }
+    </script>
+
+    <div class="form-container">
+        <form action="#" method="POST"> <!-- Specify action and method for form submission -->
+            <h3>Sign In</h3> <!-- Added a title for the form -->
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-4 col-form-label">Name</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" id="inputEmail3" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-4 col-form-label">issue faced</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" id="inputPassword3" required>
+                </div>
+            </div>
+            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-4 pt-0">option</legend>
+                    <div class="col-sm-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                                value="option1" checked>
+                            <label class="form-check-label" for="gridRadios1">First </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                                value="option2">
+                            <label class="form-check-label" for="gridRadios2">Second </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3"
+                                value="option3" >
+                            <label class="form-check-label" for="gridRadios3">Third  </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-group row">
+                <div class="col-sm-4">Checkbox</div>
+                <div class="col-sm-8">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                        <label class="form-check-label" for="gridCheck1">Example checkbox</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/67028a2937379df10df2ec50/1i9gund97';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+
+</html>
+
+
+</html>
